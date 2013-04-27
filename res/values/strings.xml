@@ -4464,6 +4464,14 @@
     <!-- Launcher settings  -->
     <string name="launcher_settings_title">Launcher</string>
 
+    <!-- LinaroBean settings  -->
+    <string name="linarobean_settings_title">LinaroBean Mods</string>
+
+    <!-- LinaroBean settings Sub Settings-->
+    <string name="lbs_userinterface_title">User Interface</string>
+    <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
+    <string name="disable_fullscreen_keyboard_summary">Landscape keyboard will never take up entire screen</string>
+
     <!-- Themes settings  -->
     <string name="themes_settings_title">Themes</string>
 

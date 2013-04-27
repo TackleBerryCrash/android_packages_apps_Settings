@@ -69,4 +69,14 @@
             android:summary="@string/pref_volume_wake_summary"
             android:defaultValue="false" />
 
+	<PreferenceCategory
+            android:key="category_linarobean_mods"
+            android:title="@string/linarobean_settings_title"/>
+	
+	<CheckBoxPreference
+            android:key="disable_fullscreen_keyboard"
+            android:title="@string/disable_fullscreen_keyboard_title"
+            android:summary="@string/disable_fullscreen_keyboard_summary"
+            android:defaultValue="false" />
+
 </PreferenceScreen>
