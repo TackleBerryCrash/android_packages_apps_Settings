@@ -39,6 +39,9 @@ import android.util.Log;
 
 import com.android.settings.Utils;
 
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+
 import java.util.ArrayList;
 
 public class InterfaceSettings extends SettingsPreferenceFragment {
@@ -53,11 +56,12 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
         ContentResolver resolver = getActivity().getContentResolver();
 
-        addPreferencesFromResource(R.xml.interface_settings);
+        addPreferencesFromResource(R.xml.display_settings);
 
 	mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
         Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+
     }
 
     @Override
