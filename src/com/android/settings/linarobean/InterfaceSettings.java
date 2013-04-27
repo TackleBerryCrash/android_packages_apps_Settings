@@ -18,10 +18,11 @@ package com.android.settings.linarobean;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ActivityManagerNative;
-import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
