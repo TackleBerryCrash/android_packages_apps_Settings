@@ -16,13 +16,13 @@
 
 package com.android.settings.linarobean;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import java.util.ArrayList;
+
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -45,8 +45,6 @@ import com.android.settings.Utils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 public class InterfaceSettings extends SettingsPreferenceFragment {
 
@@ -123,7 +121,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
                     updateCustomLabelTextSummary();
                     Intent i = new Intent();
                     i.setAction("com.android.settings.LABEL_CHANGED");
-                    mContext.sendBroadcast(i);
+                    getActivity().sendBroadcast(i);
                 }
             });
             alert.setNegativeButton(getResources().getString(R.string.cancel),
