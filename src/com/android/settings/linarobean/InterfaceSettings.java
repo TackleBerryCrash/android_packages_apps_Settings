@@ -56,7 +56,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
         ContentResolver resolver = getActivity().getContentResolver();
 
-        addPreferencesFromResource(R.xml.display_settings);
+        addPreferencesFromResource(R.xml.interface_settings);
 
 	mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
