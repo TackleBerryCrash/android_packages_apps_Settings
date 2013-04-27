@@ -58,6 +58,16 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
+    <!--LinaroBean ROM MODS -->
+    <header android:title="@string/header_category_linarobean_settings" />
+
+    <!-- LinaroBean Interface -->
+    <header
+        android:id="@+id/lbs_interface_settings"
+        android:icon="@drawable/ic_settings_linarobean"
+        android:fragment="com.android.settings.linarobean.InterfaceSettings"
+        android:title="@string/lbs_userinterface_title" />
+
     <!-- INTERFACE -->
     <header android:id="@+id/interface_section"
         android:title="@string/header_category_interface" />
@@ -92,16 +102,6 @@
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.cyanogenmod.SystemSettings"
         android:title="@string/system_settings_title" />
-
-    <!--LinaroBean ROM MODS -->
-    <header android:title="@string/header_category_linarobean_settings" />
-
-    <!-- LinaroBean Interface -->
-    <header
-        android:id="@+id/lbs_interface_settings"
-        android:icon="@drawable/ic_settings_linarobean"
-        android:fragment="com.android.settings.linarobean.InterfaceSettings"
-        android:title="@string/lbs_userinterface_title" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
