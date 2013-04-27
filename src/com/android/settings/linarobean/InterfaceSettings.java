@@ -16,6 +16,9 @@
 
 package com.android.settings.linarobean;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
 import android.content.ContentResolver;
@@ -36,11 +39,12 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
+import android.text.Spannable;
 
 import com.android.settings.Utils;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -49,7 +53,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
     private static final String TAG = "InterfaceSettings";
 
     private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
+    private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label"; 
+
+    private Preference mCustomLabel; 
     CheckBoxPreference mDisableFullscreenKeyboard; 
+
+    private String mCustomLabelText = null;
+    private int newDensityValue;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,19 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
         Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
 
+        mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
+        updateCustomLabelTextSummary();
+
+    }
+
+    private void updateCustomLabelTextSummary() {
+        mCustomLabelText = Settings.System.getString(getActivity().getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL);
+        if (mCustomLabelText == null || mCustomLabelText.length() == 0) {
+            mCustomLabel.setSummary(R.string.custom_carrier_label_notset);
+        } else {
+            mCustomLabel.setSummary(mCustomLabelText);
+        }
     }
 
     @Override
@@ -82,6 +105,35 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_FULLSCREEN_KEYBOARD, checked ? 1 : 0);
             return true;
+        } else if (preference == mCustomLabel) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+            alert.setTitle(R.string.custom_carrier_label_title);
+            alert.setMessage(R.string.custom_carrier_label_explain);
+
+            // Set an EditText view to get user input
+            final EditText input = new EditText(getActivity());
+            input.setText(mCustomLabelText != null ? mCustomLabelText : "");
+            alert.setView(input);
+            alert.setPositiveButton(getResources().getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String value = ((Spannable) input.getText()).toString();
+                    Settings.System.putString(getActivity().getContentResolver(),
+                            Settings.System.CUSTOM_CARRIER_LABEL, value);
+                    updateCustomLabelTextSummary();
+                    Intent i = new Intent();
+                    i.setAction("com.android.settings.LABEL_CHANGED");
+                    mContext.sendBroadcast(i);
+                }
+            });
+            alert.setNegativeButton(getResources().getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                }
+            });
+
+            alert.show();
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
