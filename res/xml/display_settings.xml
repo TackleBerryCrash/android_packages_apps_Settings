@@ -71,7 +71,7 @@
 
 	<PreferenceCategory
             android:key="category_linarobean_mods"
-            android:title="@string/linarobean_settings_title"/>
+            android:title="@string/header_category_linarobean_settings"/>
 	
 	<CheckBoxPreference
             android:key="disable_fullscreen_keyboard"
