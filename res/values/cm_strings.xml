@@ -797,7 +797,7 @@
     <!-- Automatic brightness customization -->
     <string name="light_sensor_current_value">Current light sensor value: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatic brightness levels</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
+    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> - <xliff:g id="levelend">%2$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_brightness_format" translatable="false"><xliff:g id="percent">%s</xliff:g>%%</string>
     <string name="auto_brightness_adjust_button">Adjust</string>
