@@ -631,11 +631,8 @@
 
     <!-- Status bar  -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
-    <string name="status_bar_show_clock_title">Show clock</string>
-    <string name="status_bar_am_pm_title">AM/PM style</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_style_title">Style</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
@@ -647,6 +644,7 @@
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
+
 
     <!-- Status bar notification count -->
     <string name="status_bar_notif_count_title">Show notification count</string>
@@ -739,6 +737,8 @@
     <string name="quick_pulldown_off">Off</string>
     <string name="quick_pulldown_left">Left</string>
     <string name="quick_pulldown_right">Right</string>
+    <string name="quick_pulldown_always">Always</string>
+    <string name="quick_pulldown_summary_always">Always pull down Quick Settings unless there are dismissible notifications</string>
     <string name="title_collapse_panel">Auto close panel</string>
     <string name="summary_collapse_panel">Close the Quick Settings panel upon toggle</string>
 
