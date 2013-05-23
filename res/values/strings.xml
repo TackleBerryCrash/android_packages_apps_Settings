@@ -4468,6 +4468,9 @@
     <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Enter string</string>    
 
+      <!-- Wakeup When Plugged -->
+     <string name="wakeup_when_plugged_unplugged_title">Wake up on charger</string>
+     <string name="wakeup_when_plugged_unplugged_summary">Wake up device if a charger is plugged/unplugged.</string>  
 
     <!-- LinaroBean settings END  -->
 </resources>

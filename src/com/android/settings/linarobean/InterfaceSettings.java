@@ -37,6 +37,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup; 
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
@@ -52,9 +53,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
     private static final String TAG = "InterfaceSettings";
 
     private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
-    private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label"; 
+    private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+    private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged"; 
 
-    private Preference mCustomLabel; 
+    private Preference mCustomLabel;
+    private CheckBoxPreference mWakeUpWhenPluggedOrUnplugged; 
     CheckBoxPreference mDisableFullscreenKeyboard; 
 
     private String mCustomLabelText = null;
@@ -70,6 +73,10 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
 	mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
         Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+
+        mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
+        mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                        Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, 1) == 1); 
 
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
@@ -104,6 +111,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_FULLSCREEN_KEYBOARD, checked ? 1 : 0);
             return true;
+        } else if (preference == mWakeUpWhenPluggedOrUnplugged) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
+                    mWakeUpWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
+            return true; 
         } else if (preference == mCustomLabel) {
             AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
             alert.setTitle(R.string.custom_carrier_label_title);
