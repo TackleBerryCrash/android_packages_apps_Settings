@@ -55,10 +55,12 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
     private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged"; 
+    private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
 
     private Preference mCustomLabel;
     private CheckBoxPreference mWakeUpWhenPluggedOrUnplugged; 
-    CheckBoxPreference mDisableFullscreenKeyboard; 
+    private CheckBoxPreference mDisableFullscreenKeyboard; 
+    private CheckBoxPreference mStatusBarAutoHide;
 
     private String mCustomLabelText = null;
     private int newDensityValue;
@@ -70,6 +72,8 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.interface_settings);
 
+	PreferenceScreen prefSet = getPreferenceScreen();
+
 	mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
         Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
@@ -77,6 +81,10 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, 1) == 1); 
+
+        mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
+        mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1)); 
 
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
@@ -106,7 +114,8 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mDisableFullscreenKeyboard) {
+	boolean value;        
+	if (preference == mDisableFullscreenKeyboard) {
             boolean checked = ((CheckBoxPreference) preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_FULLSCREEN_KEYBOARD, checked ? 1 : 0);
@@ -115,6 +124,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
                     mWakeUpWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
+            return true; 
+        } else if (preference == mStatusBarAutoHide) {
+            value = mStatusBarAutoHide.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
             return true; 
         } else if (preference == mCustomLabel) {
             AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
