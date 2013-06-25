@@ -44,6 +44,38 @@
             android:summary="@string/wakeup_when_plugged_unplugged_summary"
             android:defaultValue="false" /> 
 
+        <PreferenceCategory
+                android:key="navbar_style"
+                android:title="@string/navbar_mods">
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                    android:key="nav_bar_color"
+                    android:title="@string/navigation_bar_tint_title"
+                    android:defaultValue="#000000" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                   android:key="nav_button_color"
+                    android:title="@string/navigation_bar_icon_tint_title"
+                    android:defaultValue="#ffffff" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                    android:key="nav_button_glow_color"
+                    android:title="@string/navigation_bar_glow_tint_title"
+                    android:defaultValue="#ffffff" />
+
+            <com.android.settings.widget.SeekBarPreference
+                android:key="button_transparency"
+                android:title="@string/button_transparency_title" />
+
+            <ListPreference
+                    android:entries="@array/glow_times_entries"
+                    android:entryValues="@array/glow_times_values"
+                    android:key="glow_times"
+                    android:title="@string/glow_times_title"
+                    android:defaultValue="100|10"
+                    android:persistent="false" />
+
+        </PreferenceCategory> 
 
 
 </PreferenceScreen>

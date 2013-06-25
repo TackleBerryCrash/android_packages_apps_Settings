@@ -4476,6 +4476,20 @@
     <string name="auto_hide_statusbar">Auto Hide statusbar</string>
     <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
 
+    <string name="navigation_bar_tint_title">Navigation bar color</string>
+    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="navigation_bar_icon_tint_title">Navigation bar button color</string>
+    <string name="glow_times_title">Button glow animation</string>
+    <string name="glow_times_off">Off</string>
+    <string name="glow_times_superquick">Super quick</string>
+    <string name="glow_times_quick">Quick</string>
+    <string name="glow_times_normal">Normal</string> 
+
+    <string name="navbar_mods">NavigationBar Mods</string>
+    <string name="button_transparency_title">Navigation bar button transparency</string> 
+    <string name="menu_nav_bar_style_reset">Reset navbar style</string>
+    <string name="menu_nav_bar_dimen_reset">Reset navbar dimens</string>
+    <string name="menu_nav_bar_button_reset">Reset navbar buttons</string> 
 
     <!-- LinaroBean settings END  -->
 </resources>
