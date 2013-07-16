@@ -328,6 +328,7 @@
     <string name="display_rotation_title">Поворот экрана</string>
     <string name="display_rotation_disabled">Выключено</string>
     <string name="display_rotation_unit">градусов</string>
+    <string name="display_lockscreen_rotation_title">Поворот экрана блокировки</string>
     <string name="display_rotation_category_title">Режимы вращения</string>
     <string name="display_rotation_0_title">0 градусов</string>
     <string name="display_rotation_90_title">90 градусов</string>
@@ -613,6 +614,8 @@
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">USB-накопитель</string>
     <string name="usb_mass_storage_summary">Включить режим USB-накопителя (UMS)</string>
+    <string name="storage_rescan_media">Пересканировать память</string>
+    <string name="storage_rescan_media_complete">Сканирование завершено</string>
 
     <!-- Android debugging over WiFi -->
     <string name="adb_over_network">ADB по сети</string>
