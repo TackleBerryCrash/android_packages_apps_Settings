@@ -235,3 +235,4 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         updateClockStyleDescription();
     }	
 }
+

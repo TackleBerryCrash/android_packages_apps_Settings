@@ -110,9 +110,9 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         mGlowTimes = (ListPreference) findPreference(PREF_GLOW_TIMES);
         mGlowTimes.setOnPreferenceChangeListener(this);
 
-        updateGlowTimesSummary(); 
+        //updateGlowTimesSummary(); 
 	
-	refreshSettings(); 
+	//refreshSettings(); 
 
     }
 
